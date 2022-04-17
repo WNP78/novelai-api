@@ -415,9 +415,10 @@ class Low_Level:
         assert type(stream) is bool, f"Expected type 'bool' for stream, but got type '{type(stream)}'"
 
         if type(input) is str:
-            input = Tokenizer.encode(model, input)
+            params["use_string"] = True
+        else:
+            input = tokens_to_b64(input)
 
-        input = tokens_to_b64(input)
         args = { "input": input, "model": model.value, "parameters": params }
 
         endpoint = "/ai/generate-stream" if stream else "/ai/generate"
