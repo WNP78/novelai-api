@@ -13,7 +13,9 @@ setuptools.setup(
     long_description = long_description,
     long_description_content_type = "text/markdown",
     packages = setuptools.find_packages(),
-    include_package_data = True,
+    package_data={
+      "novelai-api": ["presets/*", "schemas/*", "templates/*", "tokenizers/*"],
+    },
     license = "MIT license",
     classifiers = [
         "Development Status :: 3 - Alpha",
